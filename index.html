@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Mengatur karakter agar teks Bahasa Indonesia tampil dengan benar -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan menyesuaikan ukuran layar HP, tablet, dan laptop -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul yang tampil pada tab browser -->
+    <title>MenuSaku | Menu Digital Cafe</title>
+
+    <!-- Deskripsi singkat website untuk mesin pencari -->
+    <meta
+        name="description"
+        content="Lihat menu makanan dan minuman cafe dengan mudah melalui MenuSaku."
+    >
+
+    <!-- Menghubungkan HTML dengan file desain CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Tombol aksesibilitas untuk langsung menuju daftar menu -->
+    <a class="skip-link" href="#daftar-menu">
+        Lewati ke daftar menu
+    </a>
+
+    <!-- ==================== HEADER ==================== -->
+    <!-- Bagian atas website yang berisi identitas dan tombol keranjang -->
+    <header class="site-header">
+        <div class="header-content">
+
+            <!-- Identitas atau logo sederhana MenuSaku -->
+            <a class="brand" href="index.html" aria-label="MenuSaku, halaman utama">
+                <span class="brand-icon" aria-hidden="true">✦</span>
+
+                <span class="brand-text">
+                    <strong>MenuSaku</strong>
+                    <small>Menu digital cafe</small>
+                </span>
+            </a>
+
+            <!-- Tombol untuk membuka atau menutup keranjang pesanan -->
+            <button
+                type="button"
+                id="cart-toggle"
+                class="cart-toggle"
+                aria-controls="cart-panel"
+                aria-expanded="false"
+            >
+                <span aria-hidden="true">🛒</span>
+                Keranjang
+                <span id="cart-count" class="cart-count">0</span>
+            </button>
+
+        </div>
+    </header>
+
+
+    <!-- ==================== KONTEN UTAMA ==================== -->
+    <main class="container">
+
+        <!-- Bagian sambutan atau pengenalan website -->
+        <section class="hero" aria-labelledby="hero-title">
+
+            <p class="hero-label">SELAMAT DATANG</p>
+
+            <h1 id="hero-title">
+                Temukan menu favoritmu.
+            </h1>
+
+            <p class="hero-description">
+                Jelajahi makanan dan minuman favoritmu dengan mudah.
+                Pilih menu, lihat harganya, lalu siapkan pesananmu.
+            </p>
+
+        </section>
+
+
+        <!-- ==================== PENCARIAN MENU ==================== -->
+        <!-- Pelanggan dapat mencari makanan berdasarkan nama menu -->
+        <section class="menu-tools" aria-label="Pencarian dan filter menu">
+
+            <div class="search-box">
+                <label for="menu-search">
+                    Cari makanan atau minuman
+                </label>
+
+                <div class="search-input-wrapper">
+
+                    <!-- Nilai input ini akan dibaca oleh JavaScript -->
+                    <input
+                        type="search"
+                        id="menu-search"
+                        name="search"
+                        placeholder="Contoh: kopi susu..."
+                        autocomplete="off"
+                    >
+
+                    <!-- Tombol untuk menghapus kata pencarian -->
+                    <button
+                        type="button"
+                        id="clear-search"
+                        class="clear-search"
+                        aria-label="Hapus pencarian"
+                    >
+                        ×
+                    </button>
+
+                </div>
+            </div>
+
+
+            <!-- ==================== FILTER KATEGORI ==================== -->
+            <!-- Atribut data-category digunakan JavaScript untuk memfilter menu -->
+            <div class="category-section">
+
+                <h2 class="category-heading">Kategori menu</h2>
+
+                <div
+                    id="category-filters"
+                    class="category-filters"
+                    role="group"
+                    aria-label="Filter kategori menu"
+                >
+
+                    <!-- Kategori Semua menampilkan seluruh menu -->
+                    <button
+                        type="button"
+                        class="category-button active"
+                        data-category="Semua"
+                        aria-pressed="true"
+                    >
+                        Semua
+                    </button>
+
+                    <!-- Kategori makanan utama -->
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-category="Makanan"
+                        aria-pressed="false"
+                    >
+                        Makanan
+                    </button>
+
+                    <!-- Kategori minuman -->
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-category="Minuman"
+                        aria-pressed="false"
+                    >
+                        Minuman
+                    </button>
+
+                    <!-- Kategori camilan -->
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-category="Camilan"
+                        aria-pressed="false"
+                    >
+                        Camilan
+                    </button>
+
+                    <!-- Kategori makanan penutup -->
+                    <button
+                        type="button"
+                        class="category-button"
+                        data-category="Dessert"
+                        aria-pressed="false"
+                    >
+                        Dessert
+                    </button>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ==================== DAFTAR MENU ==================== -->
+        <!-- Data menu akan ditampilkan secara otomatis oleh JavaScript -->
+        <section
+            id="daftar-menu"
+            class="menu-section"
+            aria-labelledby="menu-title"
+        >
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-label">PILIHAN UNTUKMU</p>
+                    <h2 id="menu-title">Daftar Menu</h2>
+                </div>
+            </div>
+
+            <!--
+                JavaScript akan memasukkan kartu makanan
+                ke dalam elemen menu-grid ini.
+            -->
+            <div
+                id="menu-grid"
+                class="menu-grid"
+                aria-live="polite"
+            >
+                <!-- Kartu menu dibuat secara otomatis oleh script.js -->
+            </div>
+
+            <!-- Pesan jika pencarian tidak menemukan menu -->
+            <p id="menu-status" class="menu-status" aria-live="polite">
+                Menu sedang disiapkan.
+            </p>
+
+            <!-- Pesan alternatif ketika JavaScript tidak aktif -->
+            <noscript>
+                <p class="notice">
+                    Aktifkan JavaScript pada browser untuk melihat
+                    daftar menu digital.
+                </p>
+            </noscript>
+
+        </section>
+
+
+        <!-- ==================== KERANJANG PESANAN ==================== -->
+        <!-- Bagian ini ditampilkan atau disembunyikan melalui JavaScript -->
+        <section
+            id="cart-panel"
+            class="cart-panel"
+            aria-labelledby="cart-title"
+            hidden
+        >
+
+            <div class="cart-header">
+
+                <div>
+                    <p class="section-label">PESANANMU</p>
+                    <h2 id="cart-title">Keranjang</h2>
+                </div>
+
+                <!-- Tombol untuk menutup panel keranjang -->
+                <button
+                    type="button"
+                    id="cart-close"
+                    class="cart-close"
+                    aria-label="Tutup keranjang"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- Daftar item yang dipilih pelanggan -->
+            <ul id="cart-items" class="cart-items">
+                <!-- Item keranjang dibuat oleh JavaScript -->
+            </ul>
+
+            <!-- Tampil ketika keranjang belum memiliki pesanan -->
+            <p id="cart-empty" class="cart-empty">
+                Keranjang masih kosong. Yuk, pilih menu favoritmu!
+            </p>
+
+
+            <!-- Bagian total harga pesanan -->
+            <div class="cart-summary">
+
+                <span>Total sementara</span>
+
+                <!-- JavaScript akan memperbarui nominal ini -->
+                <strong id="cart-total">Rp0</strong>
+
+            </div>
+
+            <p class="cart-note">
+                Total ini merupakan perkiraan harga menu,
+                belum termasuk biaya tambahan jika ada.
+            </p>
+
+
+            <!-- Tombol untuk menghapus semua item dari keranjang -->
+            <button
+                type="button"
+                id="clear-cart"
+                class="clear-cart"
+            >
+                Kosongkan Keranjang
+            </button>
+
+            <!--
+                JavaScript dapat menggunakan tombol ini untuk
+                menyiapkan ringkasan pesanan melalui WhatsApp.
+                Nomor WhatsApp cafe harus diatur di script.js.
+            -->
+            <button
+                type="button"
+                id="send-order"
+                class="send-order"
+            >
+                Siapkan Pesanan via WhatsApp
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- Informasi penutup di bagian bawah website -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <p>
+                <strong>MenuSaku</strong> — Menu digital,
+                lebih praktis untuk semua.
+            </p>
+
+            <p class="footer-note">
+                Informasi harga dan ketersediaan menu mengikuti
+                data yang diberikan oleh cafe.
+            </p>
+
+            <p class="copyright">
+                &copy; <span id="current-year">2026</span> MenuSaku.
+                All rights reserved.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <!-- ==================== FILE JAVASCRIPT ==================== -->
+
+    <!--
+        1. Memuat data menu terlebih dahulu.
+        File ini harus mendefinisikan data dengan nama "menu".
+    -->
+    <script src="data/menu.js"></script>
+
+    <!--
+        2. Memuat fungsi interaktif setelah data tersedia.
+        File ini menangani pencarian, filter, keranjang,
+        perhitungan harga, dan pengiriman pesanan.
+    -->
+    <script src="script.js"></script>
+
+</body>
+</html>
